@@ -1,0 +1,2 @@
+# Points_AI2026_Pytorch_mitsui
+郭研究室のニューラルネットワークコードのPytorch版
