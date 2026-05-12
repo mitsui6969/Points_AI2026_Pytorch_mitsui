@@ -22,8 +22,7 @@ def main():
     
     # ----------------------------------------------------
     # クラスごとの「間違えた時のペナルティ（重み）」を設定
-    # [Human, Road, Building, Tree, Sky] の順番
-    # 人・車(0)を10倍、建物(2)を5倍のペナルティにして重点的に学習させる
+    # 人・車(0)を2倍、建物(2)を3倍のペナルティにして重点的に学習させる
     # ----------------------------------------------------
     class_weights = torch.tensor([2.0, 1.0, 3.0, 1.0, 1.0]) # 0: 人・車, 1: 道・地面, 2: 建物・人工物, 3: 木・植物, 4: 空・雲
     criterion = nn.CrossEntropyLoss(weight=class_weights)
@@ -31,9 +30,12 @@ def main():
     optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.8)
     
     # 3. 学習ループ
-    epochs = 10  
+    epochs = 20
     for epoch in range(epochs):
         total_loss = 0.0
+        correct_pixels = 0  # 正解したピクセル数
+        total_pixels = 0    # 全ピクセル数
+        
         for batch_idx, (inputs, labels) in enumerate(dataloader):
             optimizer.zero_grad()             
             outputs = model(inputs)           
@@ -43,8 +45,16 @@ def main():
             
             total_loss += loss.item()
             
+            # --- 正解率(%)を計算するための処理を追加 ---
+            with torch.no_grad():
+                predicted = torch.argmax(outputs, dim=1) # AIの答え
+                correct_pixels += (predicted == labels).sum().item()
+                total_pixels += labels.size(0)
+            
         avg_loss = total_loss / len(dataloader)
-        print(f"エポック {epoch+1:2d}/{epochs} | 平均誤差(Loss): {avg_loss:.4f}")
+        accuracy = (correct_pixels / total_pixels) * 100.0 # %に変換
+        
+        print(f"エポック {epoch+1:2d}/{epochs} | 平均誤差(Loss): {avg_loss:.4f} | 正解率: {accuracy:.2f}%")
         
     # 4. 学習済みモデルの保存
     save_path = "model_weights.pth"
