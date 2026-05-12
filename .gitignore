@@ -1,1 +1,12 @@
+__pycache__/
+*.py[cod]
+
+.vscode/
+
 data/*
+
+*.pth
+model_weights.pth
+PointsAI.mlpackage/
+
+.DS_Store
