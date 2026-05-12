@@ -3,10 +3,15 @@
 
 # 使い方
 ### 学習開始
-```python train.py```
+```
+python train.py
+```
 ※教師データはあらかじめ`data/Teacher_Data/*`に入れておく
 
 ### テスト実行
-1. ```python test.py```
+1. 
+```
+python test.py
+```
 2. `data/result_Data/result_segmentation.png` に保存された画像で確認
 
