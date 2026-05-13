@@ -15,3 +15,29 @@ python test.py
 ```
 2. `data/result_Data/result_segmentation.png` に保存された画像で確認
 
+# ディレクトリ構成
+```
+.
+├── data
+│   ├── result_Data
+│   │   └── result_segmentation.png
+│   └── Teacher_Data
+│       ├── ans_img~.png
+│       ├── ans_text~.txt
+│       ├── img~.png
+├── PointsAI.mlpackage
+│   ├── Data
+│   │   └── com.apple.CoreML
+│   │       ├── weights
+│   │       │   └── weight.bin
+│   │       └── model.mlmodel
+│   └── Manifest.json
+├── .gitignore
+├── dataset.py
+├── export_coreml.py
+├── model_weights.pth
+├── model.py
+├── README.md
+├── test.py
+└── train.py
+```
