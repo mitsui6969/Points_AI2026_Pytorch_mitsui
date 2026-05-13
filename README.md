@@ -18,6 +18,8 @@ python test.py
 # ディレクトリ構成
 ```
 .
+├── .gitignore
+├── README.md
 ├── data
 │   ├── result_Data
 │   │   └── result_segmentation.png
@@ -32,12 +34,10 @@ python test.py
 │   │       │   └── weight.bin
 │   │       └── model.mlmodel
 │   └── Manifest.json
-├── .gitignore
 ├── dataset.py
 ├── export_coreml.py
 ├── model_weights.pth
 ├── model.py
-├── README.md
 ├── test.py
 └── train.py
 ```
