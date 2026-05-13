@@ -15,6 +15,11 @@ python test.py
 ```
 2. `data/result_Data/result_segmentation.png` に保存された画像で確認
 
+### mlpackage作成
+```
+python3 export_coreml.py
+```
+
 # ディレクトリ構成
 ```
 .
