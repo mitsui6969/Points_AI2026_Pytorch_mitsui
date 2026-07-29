@@ -14,8 +14,8 @@ def main():
     model.eval() # 学習モードから「推論（テスト）モード」に切り替え
 
     # 2. テスト用画像の読み込み
-    # ※学習に使った画像とは別の画像を指定して、本当に賢いかテストします。
-    img_path = "data/Teacher_Data/img250512_141838.png" 
+    # ※学習に使った画像とは別の画像を指定して、本当に賢いかテスト
+    img_path = "data/Teacher_Data/img250512_142502.png" 
     print(f"テスト画像を読み込み中: {img_path}")
     image = Image.open(img_path).convert('RGB')
     width, height = image.size
